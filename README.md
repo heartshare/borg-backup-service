@@ -34,6 +34,7 @@ The service works by mounting some relevant volumes and configuring everything t
 - `BORG_HOST`: Remote host
 - `BORG_PORT`: Port on remote host to receive SSH connections
 - `BORG_REPO_PATH_ON_HOST`: Borg repository path on host
+- `BORG_OPTIONS`: Options of borg command
 - `ARCHIVE_NAME`: Name of this borg archive
 - `BORG_PASSSPHRASE`: Passphrase for borg repository
 - `BORG_KEYS_DIR`: Path to mounted borg keys directory
@@ -47,7 +48,7 @@ The service works by mounting some relevant volumes and configuring everything t
 
 This is an example docker run command:
 
-`docker run --rm -v /home/user/some_folder:/backup_source -v /home/user/.ssh/id_rsa:/id_rsa -v /home/user/borg_keys:/borg_keys -e BORG_USER=user -e BORG_HOST=some.host -e BORG_PORT=22 -e SSH_KEY_PATH=/id_rsa -e ARCHIVE_NAME=backup_archive -e HOURLY_BACKUPS=1 -e DAILY_BACKUPS=1 -e WEEKLY_BACKUPS=1 -e BORG_PASSPHRASE=somepassphrase -e BORG_KEYS_DIR=/borg_keys -e BORG_REPO_PATH_ON_HOST="~/backup" -e SLACK_WEBHOOK="https://some.slack.webhook" muyajil/borg-backup-service`
+`docker run --rm -v /home/user/some_folder:/backup_source -v /home/user/.ssh/id_rsa:/id_rsa -v /home/user/borg_keys:/borg_keys -e BORG_USER=user -e BORG_HOST=some.host -e BORG_PORT=22 -e SSH_KEY_PATH=/id_rsa -e ARCHIVE_NAME=backup_archive -e BORG_OPTIONS="--exclude=/some/exclude/path" -e HOURLY_BACKUPS=1 -e DAILY_BACKUPS=1 -e WEEKLY_BACKUPS=1 -e BORG_PASSPHRASE=somepassphrase -e BORG_KEYS_DIR=/borg_keys -e BORG_REPO_PATH_ON_HOST="~/backup" -e SLACK_WEBHOOK="https://some.slack.webhook" muyajil/borg-backup-service`
 
 ### Docker Compose config
 
@@ -65,6 +66,7 @@ services:
       BORG_PORT: 22
       BORG_REPO_PATH_ON_HOST: "~/backup"
       ARCHIVE_NAME: backup_archive
+      BORG_OPTIONS: "--exclude=/some/exclude/path"
       BORG_PASSPHRASE: somepassphrase
       BORG_KEYS_DIR: /borg_keys
       HOURLY_BACKUPS: 1
