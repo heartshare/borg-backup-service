@@ -26,7 +26,7 @@ The service works by mounting some relevant volumes and configuring everything t
 #### Volumes
 
 - The private SSH key used to connect to the remote host needs to be mounted to some path in the container.
-- The backup source needs to be mounted to `/backup`
+- The backup source needs to be mounted to `/backup_source`
 - Some directory which will contain the borg backup keys should be mounted to some path in the container as well.
 
 #### Environment Variables
