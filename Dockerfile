@@ -6,7 +6,8 @@ RUN apt update
 RUN apt install -y \
     borgbackup \
     openssh-client \
-    cron
+    cron \
+    curl
 
 COPY backup_script.sh /var/backup_script.sh
 RUN chmod +x /var/backup_script.sh
