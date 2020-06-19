@@ -17,4 +17,7 @@ fi
 # Make env variables accessible in crontab
 declare -p | grep -Ev 'BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID' > /container.env
 
+# Run initial backup
+source /var/backup_script.sh
+
 exec "$@"
