@@ -12,7 +12,7 @@ The motivation was to be able to specify a backup as part of a docker-compose co
 
 ### Configure Cron Job
 
-- If the default backup schedule (every day at 1 AM) does not suit you do the following:
+- If the default backup schedule (every 4 hours) does not suit you do the following:
     - Clone repository: `git clone https://github.com/muyajil/borg-backup-service.git`
     - Edit `backup_cron` to reflect the cron schedule needed for the backup
     - `docker build -t your_custom_image_name .`
