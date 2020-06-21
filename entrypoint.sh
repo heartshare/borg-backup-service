@@ -2,7 +2,7 @@
 set -eo pipefail
 shopt -s nullglob
 
-mkdir ~/.ssh
+mkdir -p ~/.ssh
 echo "Host *" >> ~/.ssh/config
 echo "    StrictHostKeyChecking no" >> ~/.ssh/config
 
