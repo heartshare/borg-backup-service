@@ -11,5 +11,5 @@ if eval "$BORG_COMMAND" ; then
   borg prune --keep-hourly ${HOURLY_BACKUPS} --keep-daily ${DAILY_BACKUPS} --keep-weekly ${WEEKLY_BACKUPS}
   echo "Backup finished."
 else
-  curl -X POST -H 'Content-type: application/json' --data '{"text":"There was a problem with the backup!"}' ${SLACK_WEBHOOK}
+  curl -s -X POST -H 'Content-type: application/json' --data '{"text":"There was a problem with the backup!"}' ${SLACK_WEBHOOK}
 fi
