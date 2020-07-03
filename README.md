@@ -64,16 +64,16 @@ services:
       BORG_USER: user
       BORG_HOST: some.host
       BORG_PORT: 22
-      BORG_REPO_PATH_ON_HOST: "~/backup"
+      BORG_REPO_PATH_ON_HOST: ~/backup
       ARCHIVE_NAME: backup_archive
-      BORG_OPTIONS: "--exclude=/some/exclude/path"
+      BORG_OPTIONS: --exclude="/some/exclude/path"
       BORG_PASSPHRASE: somepassphrase
       BORG_KEYS_DIR: /borg_keys
       HOURLY_BACKUPS: 1
       DAILY_BACKUPS: 1
       WEEKLY_BACKUPS: 1
       SSH_KEY_PATH: /id_rsa
-      SLACK_WEBHOOK: "https://some.slack.webhook"
+      SLACK_WEBHOOK: https://some.slack.webhook
     volumes:
       - /home/user/some_folder:/backup_source
       - /home/user/.ssh/id_rsa:/id_rsa
