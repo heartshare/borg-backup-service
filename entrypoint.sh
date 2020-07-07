@@ -2,17 +2,6 @@
 set -eo pipefail
 shopt -s nullglob
 
-if [ -d "~/.ssh" ] 
-then
-    echo "SSH Config already initialized." 
-else
-    echo "Initializing SSH Config."
-    mkdir -p ~/.ssh
-    echo "Host *" >> ~/.ssh/config
-    echo "    StrictHostKeyChecking no" >> ~/.ssh/config
-    echo "    ServerAliveInterval 120" >> ~/.ssh/config
-fi
-
 export BORG_RSH="ssh -i ${SSH_KEY_PATH}"
 export BORG_REPO=ssh://${BORG_USER}@${BORG_HOST}:${BORG_PORT}/${BORG_REPO_PATH_ON_HOST}
 if borg init -e keyfile-blake2 ; then
