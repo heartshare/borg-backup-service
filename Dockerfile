@@ -17,7 +17,7 @@ RUN chmod +x /etc/cron.d/backup_cron
 RUN crontab /etc/cron.d/backup_cron
 
 RUN echo "    ServerAliveInterval 60" >> /etc/ssh/ssh_config
-RUN echo "    ServerAliveCountMax 5" >> /etc/ssh/ssh_config
+RUN echo "    ServerAliveCountMax 1000" >> /etc/ssh/ssh_config
 RUN echo "    TCPKeepAlive yes" >> /etc/ssh/ssh_config
 RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
